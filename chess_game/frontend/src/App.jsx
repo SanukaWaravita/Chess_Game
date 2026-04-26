@@ -11,26 +11,26 @@ function App() {
   console.log(initialBoard)
 
   return (
-    <main>
-    <h1>Chess Game</h1>
+    <main className="app">
+      <h1>Chess Game</h1>
 
-    <div>
-      {initialBoard.map((row, rowIndex) => (
-        <div key={rowIndex}>
-          {
-            row.map((piece, columnIndex) => (
-              <span key={columnIndex}>
-                {
-                  piece || '-'
-                  // If there is a piece, show the piece. 
-                  // Otherwise show '-'
-                }
-              </span>
-            ))
-          }
-        </div>
-      ))}
-    </div>
+      <div className="board">
+        {initialBoard.map((row, rowIndex) => (
+          <div key={rowIndex} className="board-row">
+            {
+              row.map((piece, columnIndex) => (
+                <span key={columnIndex} className="square">
+                  {
+                    piece || '-'
+                    // If there is a piece, show the piece. 
+                    // Otherwise show '-'
+                  }
+                </span>
+              ))
+            }
+          </div>
+        ))}
+      </div>
   </main>
   )
 }
