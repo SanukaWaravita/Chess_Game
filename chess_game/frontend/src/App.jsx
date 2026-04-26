@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { initialBoard } from './data/initialBoard'
 import { pieceImages } from './data/pieceImages'
 import './App.css'
