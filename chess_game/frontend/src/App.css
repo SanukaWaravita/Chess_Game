@@ -35,3 +35,10 @@
   background: #b58863;
   color: #f9fafb;
 }
+
+.piece {
+  width: 75%;
+  height: 75%;
+  /*Makes the piece image smaller than a square*/
+  object-fit: contain;
+}

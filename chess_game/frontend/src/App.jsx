@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import { initialBoard } from './data/initialBoard'
+import { pieceImages } from './data/pieceImages'
 import './App.css'
 
 function App() {
@@ -23,7 +24,15 @@ function App() {
 
                 return (
                   <span key={columnIndex} className={`square ${isDarkSquare ? 'square-dark' : 'square-light'}`}>
-                    {piece || ''}
+                    {
+                      piece && (
+                        <img 
+                          src={pieceImages[piece]} 
+                          alt={piece} 
+                          className="piece"
+                        />
+                      )
+                    }
                   </span>
                 )
               })
