@@ -18,15 +18,15 @@ function App() {
         {initialBoard.map((row, rowIndex) => (
           <div key={rowIndex} className="board-row">
             {
-              row.map((piece, columnIndex) => (
-                <span key={columnIndex} className="square">
-                  {
-                    piece || '-'
-                    // If there is a piece, show the piece. 
-                    // Otherwise show '-'
-                  }
-                </span>
-              ))
+              row.map((piece, columnIndex) => {
+                const isDarkSquare = (rowIndex + columnIndex) % 2 === 1
+
+                return (
+                  <span key={columnIndex} className={`square ${isDarkSquare ? 'square-dark' : 'square-light'}`}>
+                    {piece || ''}
+                  </span>
+                )
+              })
             }
           </div>
         ))}
