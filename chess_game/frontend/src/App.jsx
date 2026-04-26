@@ -1,10 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import { initialBoard } from './data/initialBoard'
 import { pieceImages } from './data/pieceImages'
 import './App.css'
+
+function getSquareColorClass(rowIndex, columnIndex) {
+  const isDarkSquare = (rowIndex + columnIndex) % 2 === 1
+
+  return isDarkSquare ? 'square-dark' : 'square-light'
+}
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,7 +22,6 @@ function App() {
           <div key={rowIndex} className="board-row">
             {
               row.map((piece, columnIndex) => {
-                const isDarkSquare = (rowIndex + columnIndex) % 2 === 1
                 
                 // Converts the column index into a chess file letter.
                 const file = String.fromCharCode(97 + columnIndex)
@@ -34,7 +35,10 @@ function App() {
 
                 return (
                   <span key={columnIndex} 
-                        className={`square ${isDarkSquare ? 'square-dark' : 'square-light'}`}
+                        className={
+                          `square ${getSquareColorClass(rowIndex, columnIndex)}`
+                          // "Give me the CSS class for this square's color"
+                        }
                         title={squareName}
                   >
                     {piece && (
