@@ -27,14 +27,17 @@ function App() {
                 // Converts the row index into a chess rank.
                 const rank = 8 - rowIndex
                 const squareName = `${file}${rank}`
+                // Only show file letters on the bottom row
+                const shouldShowFile = rowIndex === 7
+                // Only show rank numbers on the first column
+                const shouldShowRank = columnIndex === 0
 
                 return (
                   <span key={columnIndex} 
                         className={`square ${isDarkSquare ? 'square-dark' : 'square-light'}`}
                         title={squareName}
                   >
-                    {
-                      piece && (
+                    {piece && (
                         <img 
                           src={pieceImages[piece]} 
                           alt={piece} 
@@ -42,6 +45,16 @@ function App() {
                         />
                       )
                     }
+                    {shouldShowRank && (
+                      <span className="rank-label">
+                        {rank}
+                      </span>
+                    )}
+                    {shouldShowFile && (
+                      <span className="file-label">
+                        {file}
+                      </span>
+                    )}
                   </span>
                 )
               })
