@@ -22,8 +22,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  font-weight: 600;
+  /*Keep every square perfectly square*/
+  aspect-ratio: 1;
 }
 
 .square-light {
@@ -37,8 +37,12 @@
 }
 
 .piece {
-  width: 75%;
-  height: 75%;
+  width: 82%;
+  height: 82%;
   /*Makes the piece image smaller than a square*/
   object-fit: contain;
+  /*Prevents accidental selecting of the image like text when clicking or dragging*/
+  user-select: none;
+  /*Prevents image itself from catching mouse clicks*/
+  pointer-events: none;
 }
