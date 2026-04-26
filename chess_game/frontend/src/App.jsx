@@ -21,9 +21,18 @@ function App() {
             {
               row.map((piece, columnIndex) => {
                 const isDarkSquare = (rowIndex + columnIndex) % 2 === 1
+                
+                // Converts the column index into a chess file letter.
+                const file = String.fromCharCode(97 + columnIndex)
+                // Converts the row index into a chess rank.
+                const rank = 8 - rowIndex
+                const squareName = `${file}${rank}`
 
                 return (
-                  <span key={columnIndex} className={`square ${isDarkSquare ? 'square-dark' : 'square-light'}`}>
+                  <span key={columnIndex} 
+                        className={`square ${isDarkSquare ? 'square-dark' : 'square-light'}`}
+                        title={squareName}
+                  >
                     {
                       piece && (
                         <img 
